@@ -1,26 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
+import './App.scss';
+import store from './redux/redux_store';
+import { Header } from './components/Header/Header';
+import { Notes as NoteList }from './components/Notes/Notes';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+        <Header/>
+        <div className="app-holder">
+            <Switch>
+                <Route path='/notes/:id?' render={()=> <NoteList/> } />
+                <Route path='/' exact><Redirect to='/notes'/></Route>
+                <Route path='*' render={() => <div>404</div>} />
+            </Switch>
+        </div>
     </div>
-  );
+  )
 }
 
-export default App;
+const Notes = () => {
+  return (
+    <BrowserRouter>
+      <Provider store={store}>
+          <App/>
+      </Provider>
+    </BrowserRouter>
+  )
+}
+
+export default Notes

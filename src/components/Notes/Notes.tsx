@@ -22,11 +22,12 @@ export const Notes: FC<any> = props => {
             {
                 !id && <>
                     <AddNoteComponent />
+                    <span className={c.yourNotes}>Your Notes: </span>
                     <div>
                         { (notes && !notes.length) &&  <span className={c.status}>No any notes.</span> }
-                        { (notes && notes.length) && <ul className={c.notes}> { notes.map(note => {
+                        { (notes && notes.length) ? <ul className={c.notes + ' collection'}> { notes.map(note => {
                             return <Note key={note.id} note={note}/>
-                        })} </ul> }
+                        })} </ul> : null }
                     </div>
                 </>
 

@@ -2,6 +2,8 @@ import store, { ActionsTypes, GlobalState } from "./redux_store"
 import {reset} from 'redux-form';
 import { ThunkAction } from "redux-thunk";
 import { notes_api, Notes, Note, SpecifiedNote } from "../api/api";
+import { stopSubmit } from "redux-form"
+
 
 
 const initialState = {
@@ -81,7 +83,7 @@ export const actions = {
     } as const)
 }
 
-type Thunk =  ThunkAction<Promise<void>, GlobalState, unknown, ActionTypes>
+type Thunk =  ThunkAction<Promise<void>, GlobalState, unknown, ActionTypes | ReturnType<typeof stopSubmit>>
 
 export const getNotes = (): Thunk => async (dispatch) => {
     try {
@@ -102,8 +104,13 @@ export const addNote = (title: string, descr: string): Thunk => async (dispatch)
             id: data.id
         }
         dispatch(actions.setAddedNote(note))
+        dispatch(reset('addNoteForm'))
+        
     } catch(err) {
         console.log(err)
+        if(err.response.status === 422) {
+            dispatch(stopSubmit('addNoteForm',{_error: err.response.data.error ? err.response.data.error : 'some input error'}))
+        }
     }
 }
 
@@ -122,6 +129,9 @@ export const updateNote = (title: string, descr: string, id: string): Thunk => a
         dispatch(actions.setUpdatedNote(title, descr, id))
     } catch(err) {
         console.log(err)
+        if(err.response.status === 422) {
+            dispatch(stopSubmit('updateNoteForm',{_error: err.response.data.error ? err.response.data.error : 'some input error'}))
+        }
     }
 }
 

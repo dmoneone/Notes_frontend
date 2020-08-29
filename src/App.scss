@@ -46,19 +46,36 @@ table {
 	width: 100%;
 	padding: 20px;
 	box-sizing: border-box;
-	background: rgb(32, 69, 152);
+	background: #26a69a;
 	box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.75);
-	h2 {
+	a {
 		font-family: Roboto;
 		color: #fff;
 		font-size: 30px;
 		margin-left: 20px;
-		display: block;
+		display: inline;
+		text-decoration: none;
+		cursor: pointer;
+		position: relative;
+		&:before{
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 2px;
+			width: 0;
+			background: #fff;
+			transition: all ease 0.3s;
+		}
+		&:hover:before {
+			width: 80%;
+		}
+		
 	}
 }
 
 .app-holder {
-	max-width: 1200px;
+	max-width: 1000px;
 	display: block;
 	margin: 0 auto;
 }

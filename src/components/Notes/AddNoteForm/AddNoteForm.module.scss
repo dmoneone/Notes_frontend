@@ -1,0 +1,19 @@
+form.addNewPostForm {
+    > span.title {
+        font-family: Tahoma;
+        font-size: 25px;
+        color: #000;
+        display: block;
+        margin-top: 30px;
+        padding: 5px;
+    }
+}
+
+.error{
+    color: rgb(206, 73, 73) !important;
+    display: block;
+    margin-top: 20px;
+    font-family: Tahoma;
+    padding: 5px;
+    font-size: 13px;
+}

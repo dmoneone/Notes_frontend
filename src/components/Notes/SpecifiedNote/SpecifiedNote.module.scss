@@ -1,0 +1,29 @@
+.card {
+    max-width: 300px;
+    margin: 0 auto;
+    border: 1px solid #e0e0e0;
+    padding: 30px;
+    margin-top: 30px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.13);
+    li {
+        display: block;
+        padding: 5px 5px 5px 30px;
+        font-family: Roboto;
+        word-break: break-all;
+        &.date {
+            font-size: 15px;
+            color: #26a69a;
+        }
+        &.id {
+            font-size: 12px;
+        }
+        &.title {
+            font-size: 25px;
+            font-weight: bold;
+        }
+        &.descr {
+            font-size: 18px;
+        }
+    }
+}

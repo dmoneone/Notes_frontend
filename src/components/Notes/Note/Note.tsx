@@ -13,7 +13,7 @@ type Props = {
     note: NoteType
 }
 
-export const Note: FC<Props> = props => {
+export const Note: FC<Props> = React.memo(props => {
     const dispatch = useDispatch()
 
     const [isEditMode, setEditMode] = useState(false)
@@ -44,5 +44,5 @@ export const Note: FC<Props> = props => {
             </li>
         </>
     )
-}
+})
 

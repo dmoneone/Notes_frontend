@@ -8,7 +8,7 @@ type Props = {
     id: string
 }
 
-export const SpecifiedNote: FC<Props> = props => {
+export const SpecifiedNote: FC<Props> = React.memo(props => {
     const dispatch = useDispatch()
     const currentNote = useSelector((state: GlobalState) => state.notesReducer.currentNote)
     useEffect(() => {
@@ -25,4 +25,4 @@ export const SpecifiedNote: FC<Props> = props => {
             </ul>
         </>
     )
-}
+})

@@ -11,5 +11,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## If you want to run e2e test: 
 
-npm run test:cypress
+npm run test:cypress <br/>
+*for tests localhost port should be 3000*
+
 

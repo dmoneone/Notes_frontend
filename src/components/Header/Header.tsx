@@ -23,6 +23,7 @@ export const Header: FC<Props> = (props) => {
                 <span>Select language</span>
                 <label>
                     <input
+                        id='jp'
                         className="with-gap" 
                         name="language" 
                         value="jp"
@@ -34,6 +35,7 @@ export const Header: FC<Props> = (props) => {
                 </label>
                 <label>
                     <input
+                        id='en'
                         className="with-gap" 
                         name="language" 
                         value="en"

@@ -8,7 +8,11 @@ import AddNoteComponent from './AddNoteForm/AddNoteForm'
 import { useRouteMatch } from 'react-router-dom'
 import { SpecifiedNote } from './SpecifiedNote/SpecifiedNote'
 
-export const Notes: FC<any> = props => {
+type Props = {
+    t: any
+}
+
+export const Notes: FC<Props> = props => {
     const dispatch = useDispatch()
     const notes = useSelector((state: GlobalState) => state.notesReducer.notes) 
     useEffect(() => {
@@ -22,11 +26,11 @@ export const Notes: FC<any> = props => {
             {
                 !id && <>
                     <AddNoteComponent />
-                    <span className={c.yourNotes}>Your Notes: </span>
+                    <span className={c.yourNotes}> { props.t('notes.notesTitle') } </span>
                     <div>
-                        { (notes && !notes.length) &&  <span className={c.status}>No any notes.</span> }
+                        { (notes && !notes.length) &&  <span className={c.status}> {props.t('notes.emptyNotes')} </span> }
                         { (notes && notes.length) ? <ul className={c.notes + ' collection'}> { notes.map(note => {
-                            return <Note key={note.id} note={note}/>
+                            return <Note key={note.id} note={note} t={props.t} />
                         })} </ul> : null }
                     </div>
                 </>

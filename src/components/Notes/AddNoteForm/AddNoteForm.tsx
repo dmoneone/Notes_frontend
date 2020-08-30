@@ -6,6 +6,7 @@ import { createField, Input } from '../../Form/Form'
 import { required, maxLength, minLength } from '../../../form_validation_checks/form_validation_checks'
 import { addNote } from '../../../redux/notesReducer'
 import c from './AddNoteForm.module.scss'
+import { withNamespaces } from 'react-i18next'
 
 const maxLenTitle = maxLength(20)
 const minLenTitle = minLength(2)
@@ -20,29 +21,29 @@ type SubmitingDataType = {
 
 type NameType = Extract<keyof SubmitingDataType,string>
 
-const AddNoteForm: React.FC<InjectedFormProps<SubmitingDataType, {}> & {}> = (props) => {
-    
+type OwnProps = {
+    t: any
+}
+
+const AddNoteForm: React.FC<InjectedFormProps<SubmitingDataType, OwnProps> & OwnProps> = (props) => {
+    const { t } = props
     return (
         <form onSubmit={props.handleSubmit} className={c.addNewPostForm}>
-            <span className={c.title}>Create a note!</span>
-            {createField<NameType>(Input,'title','text','title',[required, maxLenTitle, minLenTitle], 'input-field')}
-            {createField<NameType>(Input,'descr','text','descr',[required, maxLenDescr, minLenDescr])}
+            <span className={c.title}>{ t('addingNewNoteForm.mainTitle') }</span>
+            {createField<NameType>(Input,'title','text', t('addingNewNoteForm.fieldTitle'),[required, maxLenTitle, minLenTitle], 'input-field')}
+            {createField<NameType>(Input,'descr','text', t('addingNewNoteForm.fieldDescr'),[required, maxLenDescr, minLenDescr])}
             {props.error && <span className={c.error}>{props.error}</span>}
-            <button className='waves-effect waves-light btn'>Create</button>
+            <button className='waves-effect waves-light btn'>{ t('addingNewNoteForm.btnContent')}</button>
         </form>
     )
 }
 
-const AddNoteReduxForm = reduxForm<SubmitingDataType, {}>({
+let AddNoteReduxForm = reduxForm<SubmitingDataType, OwnProps>({
     form: 'addNoteForm'
 })(AddNoteForm)
 
 
-type Props = {
-
-}
-
-const AddNoteComponent: React.FC<Props> = props => {
+const AddNoteComponent: React.FC<any> = props => {
     const dispatch = useDispatch()
 
     const submit = (data: SubmitingDataType) => {
@@ -51,9 +52,9 @@ const AddNoteComponent: React.FC<Props> = props => {
     
     return (
         <div>
-            <AddNoteReduxForm onSubmit={submit} />
+            <AddNoteReduxForm onSubmit={submit} t={props.t}/>
         </div>   
     )
 }
 
-export default AddNoteComponent
+export default withNamespaces()(AddNoteComponent)

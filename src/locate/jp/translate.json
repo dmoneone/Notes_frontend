@@ -1,0 +1,21 @@
+
+{
+    "translations": {
+        "header": {
+            "mainTitle": "ノート"
+        },
+        "addingNewNoteForm" : {
+            "mainTitle": "メモを作成してください！",
+            "fieldTitle": "題名",
+            "fieldDescr": "解説",
+            "btnContent": "つくる"
+        },
+        "notes": {
+            "notesTitle": "あなたのメモ：",
+            "emptyNotes": "メモはありません。"
+        },
+        "updateNoteForm": {
+            "editMode": "編集モード："
+        }
+    }
+}

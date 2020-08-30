@@ -46,9 +46,11 @@ table {
 	width: 100%;
 	padding: 20px;
 	box-sizing: border-box;
-	background: #26a69a;
+	background: rgb(32, 69, 152);
 	box-shadow: 0px 0px 11px 0px rgba(0,0,0,0.75);
-	a {
+	display: flex;
+	justify-content: space-between;
+	a#notes-title{
 		font-family: Roboto;
 		color: #fff;
 		font-size: 30px;
@@ -71,6 +73,14 @@ table {
 			width: 80%;
 		}
 		
+	}
+	.lan-panel {
+		span {
+			font-family: Roboto;
+			font-size: 12px;
+			color: #e0e0e0;
+			margin-right: 10px;
+		}
 	}
 }
 

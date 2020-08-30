@@ -1,0 +1,21 @@
+
+{
+    "translations": {
+        "header": {
+            "mainTitle": "Notes"
+        },
+        "addingNewNoteForm" : {
+            "mainTitle": "Create a note!",
+            "fieldTitle": "title",
+            "fieldDescr": "description",
+            "btnContent": "Create"
+        },
+        "notes": {
+            "notesTitle": "Your Notes",
+            "emptyNotes": "No any notes."
+        },
+        "updateNoteForm": {
+            "editMode": "Edit mode:"
+        }
+    }
+}

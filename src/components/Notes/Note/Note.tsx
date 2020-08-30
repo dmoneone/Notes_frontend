@@ -10,20 +10,21 @@ import removeI from '../../../assets/icons/rmv.png'
 import showI from '../../../assets/icons/show.png'
 
 type Props = {
-    note: NoteType
+    note: NoteType,
+    t: any
 }
 
 export const Note: FC<Props> = React.memo(props => {
     const dispatch = useDispatch()
 
     const [isEditMode, setEditMode] = useState(false)
-
+    
     return (
         <>
             <li className='collection-item'>
                 { !isEditMode && <span className={c.content}>{props.note.title}</span>}
                 { !isEditMode && <span className={c.content}>{props.note.descr}</span>}
-                { isEditMode && <span className={c.edit_mode}>Edit mode: </span> }
+                { isEditMode && <span className={c.edit_mode}>{ props.t('updateNoteForm.editMode') }</span> }
                 { isEditMode && <UpdateNoteComponent 
                     id={props.note.id} 
                     initialValues={{title: props.note.title, descr: props.note.descr}}
